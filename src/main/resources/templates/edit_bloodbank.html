@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Blood Bank</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Update Blood Bank Entry </h1>
+				<div class = "card-body">
+					<form th:action="@{/bloodbanks/{id} (id=${bloodbank.id})}" th:object = "${bloodbank}" method="POST">
+						<div class ="form-group">
+							<label> Blood Type </label>
+							<input
+							type = "text"
+							name = "type"
+							th:field = "*{type}"
+							class = "form-control"
+							placeholder="Enter Blood Type" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Blood In Stock</label>
+							<input
+							type = "Number"
+							name = "bloodInStock"
+							th:field = "*{bloodInStock}"
+							class = "form-control"
+							placeholder="Enter Blood In Stock" 
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Expirations Date </label>
+							<input
+							type = "date"
+							name = "expiry"
+							th:field = "*{expiry}"
+							class = "form-control"
+							placeholder="Enter blood expiry date" 
+							/>
+						</div>		
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+							
+						</div>
+					</form>
+					<br>
+					<button class="btn btn-dark"><a th:href = "@{/bloodbanks}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+</svg></a></button>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

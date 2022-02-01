@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Appointments</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/}"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+</svg> Home</span></a>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class ="navbar-nav">
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/doctors}">Doctors</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/patients}">Patients</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/nurses}">Nurses</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/departments}">Department</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/rooms}">Rooms</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/pharm}">Pharmacy</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/bloodbanks}">Blood Bank</a></li>
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/appointments}">Appointments</a></li>
+				
+				</ul>	
+			</div>
+			<div id="navbar" class="collapse navbar-collapse" style="padding-left : 370px">
+		 		<ul class="navbar-nav navbar-right">
+					<li sec:authorize="isAuthenticated()"><a class= "nav-link" th:href="@{/logout}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+</svg> Logout </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class ="container">
+		<div class = "row">
+			<h3> List of Appointments Made </h3>
+		</div>
+		
+		<div class = "row">
+			<div class = "col-lg-3">
+				<a th:href = "@{/appointments/new}" class = "btn btn-primary btn-sm mb-3"> Add appointment</a>
+			</div>
+		</div>
+		<table class = "table">
+			<thead class = "table-dark">
+				<tr>
+					<th> Name</th>
+					<th> Reason for appointment</th>
+					<th> Mobile Number</th>
+					<th> Address</th>
+					<th> Email-id</th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "appointment: ${appointments}">
+					<td th:text = "${appointment.name}"></td>
+					<td th:text = "${appointment.reason}"></td>
+					<td th:text = "${appointment.mobile}"></td>
+					<td th:text = "${appointment.address}"></td>
+					<td th:text = "${appointment.email}"></td>
+					<td>
+						<a th:href = "@{/appointments/edit/{id}(id=${appointment.id})}"
+						 class = "btn btn-primary">Update</a>
+						
+						<a th:href = "@{/appointments/{id}(id=${appointment.id})}"
+						 class = "btn btn-danger">Delete</a>
+						 
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+	</div>
+</body>
+</html>

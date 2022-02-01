@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Bill</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Update Bill</h1>
+				<div class="card-body">
+					<form th:action="@{/bills/{id} (id=${bill.id})}"
+						th:object="${bill}" method="POST">
+						<div class="form-group">
+							<label> Id Of patient </label> <input type="text"
+								name="Id of Patient" th:field="*{patient_id}"
+								class="form-control" placeholder="Enter Id of patient" />
+						</div>
+
+						<div class="form-group">
+							<label> Doctor Charge </label> <input type="text"
+								name="Doctor Charge" th:field="*{doctor_charge}"
+								class="form-control" placeholder="Enter Charge of Doctor" />
+						</div>
+						<div class="form-group">
+							<label> Room Charge </label> <input type="text"
+								name="Room Charge" th:field="*{room_charge}"
+								class="form-control" placeholder="Enter Charge of Room" />
+						</div>
+						<div class="form-group">
+							<label> No Of Days </label> <input type="text" name="No Of days"
+								th:field="*{no_of_days}" class="form-control"
+								placeholder="Enter No Of Days" />
+						</div>
+						<div class="form-group">
+							<label> Total Charge </label> <input type="text"
+								name="Total Charge" th:field="*{total}" class="form-control"
+								placeholder="Enter Total Charge" />
+						</div>
+
+
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							
+						</div>
+					</form>
+					<br>
+					<button class="btn btn-dark"><a th:href = "@{/bills}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+</svg></a></button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
